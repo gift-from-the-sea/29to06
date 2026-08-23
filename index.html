@@ -468,152 +468,177 @@
        JAVASCRIPT
     ========================= -->
 
-  <script>
+    <script>
 
-    const bottles = document.querySelectorAll(".bottle");
+  /* =========================
+     MODO DE PRUEBA
+  ========================= */
 
-    const parchmentOverlay =
-      document.getElementById("parchmentOverlay");
+  const MODO_PRUEBA = true;
 
-    const parchmentDate =
-      document.getElementById("parchmentDate");
+  /*
+    Cambia esta fecha para probar diferentes días.
 
-    const parchmentClose =
-      document.getElementById("parchmentClose");
+    2026-08-29 → solo 29
+    2026-08-30 → 29 y 30
+    2026-08-31 → 29, 30 y 31
+    2026-09-01 → hasta el 1
+    etc.
+  */
+
+  const FECHA_PRUEBA = "2026-08-29";
 
 
-    /*
-      Esta función convierte una fecha
-      en un número fácil de comparar.
+  /* =========================
+     FECHA ACTUAL
+  ========================= */
 
-      Ejemplo:
+  let today;
 
-      29 de agosto = 829
-      30 de agosto = 830
-      1 de septiembre = 901
-    */
+  if (MODO_PRUEBA) {
 
-    function dateNumber(day, month) {
-      return month * 100 + day;
+    today = new Date(FECHA_PRUEBA + "T00:00:00");
+
+  } else {
+
+    today = new Date();
+
+  }
+
+
+  const currentDay = today.getDate();
+
+  const currentMonth = today.getMonth() + 1;
+
+
+  /* =========================
+     FUNCIONES
+  ========================= */
+
+  function dateNumber(day, month) {
+
+    return month * 100 + day;
+
+  }
+
+
+  /* =========================
+     ELEMENTOS
+  ========================= */
+
+  const bottles =
+    document.querySelectorAll(".bottle");
+
+  const parchmentOverlay =
+    document.getElementById("parchmentOverlay");
+
+  const parchmentDate =
+    document.getElementById("parchmentDate");
+
+  const parchmentClose =
+    document.getElementById("parchmentClose");
+
+
+  /* =========================
+     DESBLOQUEO
+  ========================= */
+
+  const currentDateNumber =
+    dateNumber(currentDay, currentMonth);
+
+
+  bottles.forEach((bottle) => {
+
+    const bottleDay =
+      Number(bottle.dataset.day);
+
+    const bottleMonth =
+      Number(bottle.dataset.month);
+
+    const bottleDateNumber =
+      dateNumber(bottleDay, bottleMonth);
+
+
+    /* BOTELLA DESBLOQUEADA */
+
+    if (currentDateNumber >= bottleDateNumber) {
+
+      bottle.classList.add("unlocked");
+
+      bottle.classList.remove("locked");
+
     }
 
 
-    /*
-      Obtenemos la fecha actual
-      del dispositivo de la persona.
-    */
+    /* BOTELLA BLOQUEADA */
 
-    const today = new Date();
+    else {
 
-    const currentDay = today.getDate();
+      bottle.classList.add("locked");
 
-    const currentMonth = today.getMonth() + 1;
+      bottle.classList.remove("unlocked");
 
-    const currentDateNumber =
-      dateNumber(currentDay, currentMonth);
+    }
 
 
-    /*
-      Revisamos cada botella.
-    */
+    /* =========================
+       CLICK
+    ========================= */
 
-    bottles.forEach((bottle) => {
+    bottle.addEventListener("click", () => {
 
-      const bottleDay =
-        Number(bottle.dataset.day);
+      if (bottle.classList.contains("locked")) {
 
-      const bottleMonth =
-        Number(bottle.dataset.month);
+        parchmentDate.textContent =
+          "Podrás abrirla el " +
+          bottle.dataset.date + ".";
 
-      const bottleDateNumber =
-        dateNumber(bottleDay, bottleMonth);
-
-
-      /*
-        Si ya llegó el día de la botella,
-        queda desbloqueada.
-
-        Si todavía no llegó,
-        queda bloqueada.
-      */
-
-      if (currentDateNumber >= bottleDateNumber) {
-
-        bottle.classList.add("unlocked");
-        bottle.classList.remove("locked");
-
-      } else {
-
-        bottle.classList.add("locked");
-        bottle.classList.remove("unlocked");
+        parchmentOverlay.classList.add("show");
 
       }
 
-
-      /*
-        Al hacer clic en una botella bloqueada
-      */
-
-      bottle.addEventListener("click", () => {
-
-        if (bottle.classList.contains("locked")) {
-
-          parchmentDate.textContent =
-            "Podrás abrirla el " +
-            bottle.dataset.date + ".";
-
-          parchmentOverlay.classList.add("show");
-
-        }
-
-      });
-
     });
 
+  });
 
-    /*
-      Cerrar el pergamino
-    */
 
-    parchmentClose.addEventListener("click", () => {
+  /* =========================
+     CERRAR PERGAMINO
+  ========================= */
+
+  parchmentClose.addEventListener("click", () => {
+
+    parchmentOverlay.classList.remove("show");
+
+  });
+
+
+  /* CERRAR HACIENDO CLICK FUERA */
+
+  parchmentOverlay.addEventListener("click", (event) => {
+
+    if (event.target === parchmentOverlay) {
 
       parchmentOverlay.classList.remove("show");
 
-    });
+    }
+
+  });
 
 
-    /*
-      También se puede cerrar
-      haciendo clic fuera del pergamino.
-    */
+  /* CERRAR CON ESC */
 
-    parchmentOverlay.addEventListener("click", (event) => {
+  document.addEventListener("keydown", (event) => {
 
-      if (event.target === parchmentOverlay) {
+    if (event.key === "Escape") {
 
-        parchmentOverlay.classList.remove("show");
+      parchmentOverlay.classList.remove("show");
 
-      }
+    }
 
-    });
+  });
 
-
-    /*
-      También se puede cerrar
-      presionando ESC.
-    */
-
-    document.addEventListener("keydown", (event) => {
-
-      if (event.key === "Escape") {
-
-        parchmentOverlay.classList.remove("show");
-
-      }
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
