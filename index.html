@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>a gift in a bottle</title>
 
   <style>
+
+    /* =========================
+       FONDO
+    ========================= */
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -19,153 +26,287 @@
       font-family: Georgia, serif;
     }
 
-    /* HEADER */
+
+    /* =========================
+       TITULO
+    ========================= */
+
     .header-image {
       width: 80%;
       max-width: 700px;
       height: auto;
+
       display: block;
+
       margin: 20px auto 40px;
     }
 
-    /* CONTENEDOR DE LAS BOTELLAS */
+
+    /* =========================
+       CONTENEDOR
+    ========================= */
+
     .bottles {
       width: 90%;
       max-width: 900px;
+
       margin: 0 auto 50px;
 
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 35px;
 
       justify-items: center;
       align-items: center;
     }
 
-    /* TODAS LAS BOTELLAS */
+
+    /* =========================
+       TODAS LAS BOTELLAS
+    ========================= */
+
     .bottle {
+
       width: 160px;
       height: auto;
+
+      display: block;
+
       cursor: pointer;
 
-      transition: transform 0.4s ease, filter 0.4s ease;
+      /* Brillo permanente */
+
+      filter:
+        brightness(1.25)
+        saturate(1.2)
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
+        drop-shadow(0 0 12px rgba(255, 220, 245, 0.8))
+        drop-shadow(0 0 22px rgba(255, 190, 235, 0.6));
+
+      transition:
+        filter 0.4s ease,
+        transform 0.4s ease;
 
       animation: floating 3s ease-in-out infinite;
+
+      /* Evita efectos raros de selección */
+
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
-    /* BOTELLAS CERRADAS */
+
+    /* =========================
+       BOTELLAS BLOQUEADAS
+    ========================= */
+
     .bottle.locked {
-      opacity: 1 !important;
-      filter: brightness(1.5) saturate(1.3) !important;
+
+      opacity: 1;
 
       cursor: not-allowed;
+
+      /* Las bloqueadas conservan TODO el brillo */
+
+      filter:
+        brightness(1.25)
+        saturate(1.2)
+        drop-shadow(0 0 5px rgba(255, 255, 255, 0.9))
+        drop-shadow(0 0 12px rgba(255, 220, 245, 0.8))
+        drop-shadow(0 0 22px rgba(255, 190, 235, 0.6));
     }
 
-    /* EFECTO AL PASAR EL CURSOR */
+
+    /* =========================
+       BRILLO AL PASAR EL CURSOR
+    ========================= */
+
     .bottle:hover {
-      transform: translateY(-10px) rotate(-3deg) scale(1.05);
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+
+      filter:
+        brightness(1.4)
+        saturate(1.3)
+        drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+        drop-shadow(0 0 18px rgba(255, 220, 245, 1))
+        drop-shadow(0 0 30px rgba(255, 190, 235, 0.9));
+
+      transform:
+        translateY(-10px)
+        rotate(-3deg)
+        scale(1.05);
     }
 
-    /* ANIMACIÓN DE FLOTACIÓN */
+
+    /* =========================
+       FLOTACIÓN
+    ========================= */
+
     @keyframes floating {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
 
       50% {
         transform: translateY(-8px);
       }
+
     }
 
-    /* CELULAR */
+
+    /* =========================
+       CELULAR
+    ========================= */
+
     @media (max-width: 600px) {
 
       .header-image {
+
         width: 95%;
+
         margin-bottom: 25px;
       }
 
+
       .bottles {
+
         width: 95%;
+
         grid-template-columns: repeat(2, 1fr);
+
         gap: 20px;
       }
 
+
       .bottle {
+
         width: 120px;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
+
+  <!-- =========================
+       TITULO
+  ========================= -->
+
   <img
     src="titulo2.png"
     alt="Una sorpresa en una botella"
     class="header-image"
   >
 
-  <!-- BOTELLAS -->
+
+  <!-- =========================
+       BOTELLAS
+  ========================= -->
+
   <div class="bottles">
+
+
+    <!-- 29 DE AGOSTO -->
 
     <img
       src="29ago.png"
       class="bottle unlocked"
       alt="Botella del 29 de agosto"
+      draggable="false"
     >
+
+
+    <!-- 30 DE AGOSTO -->
 
     <img
       src="30ago.png"
       class="bottle locked"
       alt="Botella del 30 de agosto"
+      draggable="false"
     >
+
+
+    <!-- 31 DE AGOSTO -->
 
     <img
       src="31ago.png"
       class="bottle locked"
       alt="Botella del 31 de agosto"
+      draggable="false"
     >
+
+
+    <!-- 1 DE SEPTIEMBRE -->
 
     <img
       src="01sep.png"
       class="bottle locked"
       alt="Botella del 1 de septiembre"
+      draggable="false"
     >
+
+
+    <!-- 2 DE SEPTIEMBRE -->
 
     <img
       src="02sep.png"
       class="bottle locked"
       alt="Botella del 2 de septiembre"
+      draggable="false"
     >
+
+
+    <!-- 3 DE SEPTIEMBRE -->
 
     <img
       src="03sep.png"
       class="bottle locked"
       alt="Botella del 3 de septiembre"
+      draggable="false"
     >
+
+
+    <!-- 4 DE SEPTIEMBRE -->
 
     <img
       src="04sep.png"
       class="bottle locked"
       alt="Botella del 4 de septiembre"
+      draggable="false"
     >
+
+
+    <!-- 5 DE SEPTIEMBRE -->
 
     <img
       src="05sep.png"
       class="bottle locked"
       alt="Botella del 5 de septiembre"
+      draggable="false"
     >
+
+
+    <!-- 6 DE SEPTIEMBRE -->
 
     <img
       src="06sep.png"
       class="bottle locked"
       alt="Botella del 6 de septiembre"
+      draggable="false"
     >
+
 
   </div>
 
+
 </body>
+
 </html>
