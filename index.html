@@ -53,10 +53,17 @@
       animation: floating 3s ease-in-out infinite;
     }
 
+    /* BOTELLAS CERRADAS */
+    .bottle.locked {
+      opacity: 1 !important;
+      filter: brightness(1.5) saturate(1.3) !important;
+
+      cursor: not-allowed;
+    }
+
     /* EFECTO AL PASAR EL CURSOR */
     .bottle:hover {
       transform: translateY(-10px) rotate(-3deg) scale(1.05);
-
       filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
     }
 
