@@ -44,11 +44,29 @@
 
     /* BOTELLAS */
     .bottle {
-      width: 160px;
-      height: auto;
-      cursor: pointer;
+  width: 160px;
+  height: auto;
+  cursor: pointer;
 
-      transition: transform 0.3s ease;
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+  animation: floating 3s ease-in-out infinite;
+}
+
+.bottle:hover {
+  transform: translateY(-10px) rotate(-3deg) scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
     }
 
     .bottle:hover {
