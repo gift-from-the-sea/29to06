@@ -70,22 +70,23 @@
     }
 
     /* BOTELLAS BLOQUEADAS */
-    .bottle.locked {
-      filter: brightness(0.6) saturate(0.5);
-      cursor: not-allowed;
+  .bottle.locked {
+  opacity: 0.45;
+  filter: grayscale(0.3) brightness(0.7) saturate(0.5);
+  cursor: not-allowed;
 
-      animation: floating 4s ease-in-out infinite;
-    }
+  animation: floating 4s ease-in-out infinite;
+}
 
-    .bottle.locked:hover {
-      transform: scale(1.02);
+.bottle.locked:hover {
+  opacity: 0.55;
 
-      filter:
-        brightness(0.7)
-        saturate(0.6)
-        drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-    }
-
+  filter:
+    grayscale(0.3)
+    brightness(0.75)
+    saturate(0.5)
+    drop-shadow(0 0 8px rgba(180, 230, 255, 0.5));
+}
     /* ANIMACIÓN DE FLOTACIÓN */
     @keyframes floating {
       0%, 100% {
