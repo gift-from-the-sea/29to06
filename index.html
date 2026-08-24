@@ -6,7 +6,6 @@
   <title>29 to 06</title>
 
   <style>
-
     body {
       margin: 0;
       min-height: 100vh;
@@ -20,11 +19,7 @@
       font-family: Georgia, serif;
     }
 
-
-    /* =========================
-       HEADER
-    ========================= */
-
+    /* HEADER */
     .header-image {
       width: 80%;
       max-width: 700px;
@@ -33,11 +28,7 @@
       margin: 20px auto 40px;
     }
 
-
-    /* =========================
-       CONTENEDOR DE BOTELLAS
-    ========================= */
-
+    /* CONTENEDOR DE LAS BOTELLAS */
     .bottles {
       width: 90%;
       max-width: 900px;
@@ -51,244 +42,37 @@
       align-items: center;
     }
 
-
-    /* =========================
-       BOTELLAS
-       ESTE ES TU EFECTO ORIGINAL
-    ========================= */
-
-    .bottle {
-      width: 160px;
-      height: auto;
-      cursor: pointer;
-
-      transition: transform 0.4s ease, filter 0.4s ease;
-
-      animation: floating 3s ease-in-out infinite;
-    }
-
-
-    /* BRILLO DE LAS BOTELLAS DISPONIBLES */
-
-    .bottle.unlocked:hover {
-      transform: translateY(-10px) rotate(-3deg) scale(1.05);
-
-      filter:
-        drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
-    }
-
-
-    /* =========================
-       BOTELLAS BLOQUEADAS
-    ========================= */
-
-    .bottle.locked {
-      cursor: not-allowed;
-    }
-
-
-    /* EFECTO NEGRO AL PASAR EL CURSOR */
-
-    .bottle.locked:hover {
-      transform: translateY(-10px) rotate(-3deg) scale(1.05);
-
-      filter:
-        drop-shadow(0 0 6px rgba(0, 0, 0, 0.9))
-        drop-shadow(0 0 14px rgba(0, 0, 0, 0.7));
-    }
-
-
-    /* =========================
-       FLOTACIÓN
-    ========================= */
-
-    @keyframes floating {
-
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-
-    }
-
-
-    /* =========================
-       PERGAMINO
-    ========================= */
-
-    .parchment-overlay {
-      position: fixed;
-
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: 100%;
-
-      background: rgba(0, 0, 0, 0.55);
-
-      display: none;
-
-      justify-content: center;
-      align-items: center;
-
-      z-index: 1000;
-
-      padding: 20px;
-
-      box-sizing: border-box;
-    }
-
-
-    .parchment-overlay.show {
-      display: flex;
-    }
-
-
-    .parchment {
-      position: relative;
-
-      width: 90%;
-      max-width: 520px;
-
-      padding: 55px 40px;
-
-      box-sizing: border-box;
-
-      text-align: center;
-
-      color: #4a321f;
-
-      font-family: Georgia, serif;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ead5a3,
-          #f5e6bd,
-          #dfc28c
-        );
-
-      border: 2px solid #a9824f;
-
-      box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.65),
-        inset 0 0 25px rgba(100, 65, 25, 0.3);
-
-      transform: rotate(-1deg);
-
-      animation: parchmentAppear 0.4s ease;
-    }
-
-
-    /* BORDES DECORATIVOS DEL PERGAMINO */
-
-    .parchment::before {
-      content: "";
-
-      position: absolute;
-
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-
-      border: 1px solid rgba(90, 55, 25, 0.35);
-
-      pointer-events: none;
-    }
-
-
-    @keyframes parchmentAppear {
-
-      from {
-        opacity: 0;
-        transform: scale(0.85) rotate(-4deg);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1) rotate(-1deg);
-      }
-
-    }
-
-
-    /* =========================
-       TEXTO DEL PERGAMINO
-    ========================= */
-
-    .parchment-title {
-      margin: 0 0 20px;
-
-      font-size: 27px;
-
-      font-weight: bold;
-    }
-
-
-    .parchment-message {
-      margin: 0;
-
-      font-size: 18px;
-
-      line-height: 1.7;
-    }
-
-
-    .parchment-date {
-      margin-top: 20px;
-
-      font-size: 17px;
-
-      font-weight: bold;
-    }
-
-
-    /* =========================
-       BOTÓN CERRAR
-    ========================= */
-
-    .parchment-close {
-      margin-top: 30px;
-
-      padding: 10px 25px;
-
-      border: 1px solid #76532f;
-
-      background: rgba(120, 82, 42, 0.15);
-
-      color: #4a321f;
-
-      font-family: Georgia, serif;
-
-      font-size: 15px;
-
-      cursor: pointer;
-
-      transition: background 0.3s ease;
-    }
-
-
-    .parchment-close:hover {
-      background: rgba(120, 82, 42, 0.3);
-    }
-
-
-    /* =========================
-       CELULAR
-    ========================= */
-
+    /* BOTELLAS */
+ .bottle {
+  width: 160px;
+  height: auto;
+  cursor: pointer;
+
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+  animation: floating 3s ease-in-out infinite;
+}
+
+.bottle:hover {
+  transform: translateY(-10px) rotate(-3deg) scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+    /* CELULAR */
     @media (max-width: 600px) {
-
       .header-image {
         width: 95%;
         margin-bottom: 25px;
       }
-
 
       .bottles {
         width: 95%;
@@ -296,347 +80,44 @@
         gap: 20px;
       }
 
-
       .bottle {
         width: 120px;
       }
-
-
-      .parchment {
-        width: 92%;
-
-        padding: 45px 25px;
-      }
-
-
-      .parchment-title {
-        font-size: 23px;
-      }
-
-
-      .parchment-message {
-        font-size: 16px;
-      }
-
     }
-
   </style>
 </head>
 
-
 <body>
 
-
-  <!-- =========================
-       HEADER
-  ========================= -->
-
+  <!-- HEADER -->
   <img
     src="titulo2.png"
     alt="una sorpresa en una botella"
     class="header-image"
   >
 
-
-  <!-- =========================
-       BOTELLAS
-  ========================= -->
-
+  <!-- BOTELLAS -->
   <div class="bottles">
 
-    <img
-      src="29ago.png"
-      class="bottle"
-      data-day="29"
-      data-month="8"
-      data-date="29 de agosto"
-      alt="Botella del 29 de agosto"
-    >
+    <img src="29ago.png" class="bottle" alt="Botella del 29 de agosto">
 
-    <img
-      src="30ago.png"
-      class="bottle"
-      data-day="30"
-      data-month="8"
-      data-date="30 de agosto"
-      alt="Botella del 30 de agosto"
-    >
+    <img src="30ago.png" class="bottle" alt="Botella del 30 de agosto">
 
-    <img
-      src="31ago.png"
-      class="bottle"
-      data-day="31"
-      data-month="8"
-      data-date="31 de agosto"
-      alt="Botella del 31 de agosto"
-    >
+    <img src="31ago.png" class="bottle" alt="Botella del 31 de agosto">
 
-    <img
-      src="01sep.png"
-      class="bottle"
-      data-day="1"
-      data-month="9"
-      data-date="1 de septiembre"
-      alt="Botella del 1 de septiembre"
-    >
+    <img src="01sep.png" class="bottle" alt="Botella del 1 de septiembre">
 
-    <img
-      src="02sep.png"
-      class="bottle"
-      data-day="2"
-      data-month="9"
-      data-date="2 de septiembre"
-      alt="Botella del 2 de septiembre"
-    >
+    <img src="02sep.png" class="bottle" alt="Botella del 2 de septiembre">
 
-    <img
-      src="03sep.png"
-      class="bottle"
-      data-day="3"
-      data-month="9"
-      data-date="3 de septiembre"
-      alt="Botella del 3 de septiembre"
-    >
+    <img src="03sep.png" class="bottle" alt="Botella del 3 de septiembre">
 
-    <img
-      src="04sep.png"
-      class="bottle"
-      data-day="4"
-      data-month="9"
-      data-date="4 de septiembre"
-      alt="Botella del 4 de septiembre"
-    >
+    <img src="04sep.png" class="bottle" alt="Botella del 4 de septiembre">
 
-    <img
-      src="05sep.png"
-      class="bottle"
-      data-day="5"
-      data-month="9"
-      data-date="5 de septiembre"
-      alt="Botella del 5 de septiembre"
-    >
+    <img src="05sep.png" class="bottle" alt="Botella del 5 de septiembre">
 
-    <img
-      src="06sep.png"
-      class="bottle"
-      data-day="6"
-      data-month="9"
-      data-date="6 de septiembre"
-      alt="Botella del 6 de septiembre"
-    >
+    <img src="06sep.png" class="bottle" alt="Botella del 6 de septiembre">
 
   </div>
 
-
-  <!-- =========================
-       PERGAMINO
-  ========================= -->
-
-  <div
-    class="parchment-overlay"
-    id="parchmentOverlay"
-  >
-
-    <div class="parchment">
-
-      <h2 class="parchment-title">
-        Esta botella aún no puede abrirse...
-      </h2>
-
-      <p class="parchment-message">
-        Su secreto todavía permanece bajo el mar.
-      </p>
-
-      <p
-        class="parchment-date"
-        id="parchmentDate"
-      ></p>
-
-      <button
-        class="parchment-close"
-        id="parchmentClose"
-      >
-        Cerrar
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- =========================
-       JAVASCRIPT
-    ========================= -->
-<script>
-
-  /* =========================
-     MODO DE PRUEBA
-  ========================= */
-
-  const MODO_PRUEBA = true;
-
-  /*
-    Cambia esta fecha para probar diferentes días.
-
-    2026-08-29 → solo 29
-    2026-08-30 → 29 y 30
-    2026-08-31 → 29, 30 y 31
-    2026-09-01 → hasta el 1
-    etc.
-  */
-
-  const FECHA_PRUEBA = "2026-08-29";
-
-
-  /* =========================
-     FECHA ACTUAL
-  ========================= */
-
-  let today;
-
-  if (MODO_PRUEBA) {
-
-    today = new Date(FECHA_PRUEBA + "T00:00:00");
-
-  } else {
-
-    today = new Date();
-
-  }
-
-
-  const currentDay = today.getDate();
-
-  const currentMonth = today.getMonth() + 1;
-
-
-  /* =========================
-     FUNCIONES
-  ========================= */
-
-  function dateNumber(day, month) {
-
-    return month * 100 + day;
-
-  }
-
-
-  /* =========================
-     ELEMENTOS
-  ========================= */
-
-  const bottles =
-    document.querySelectorAll(".bottle");
-
-  const parchmentOverlay =
-    document.getElementById("parchmentOverlay");
-
-  const parchmentDate =
-    document.getElementById("parchmentDate");
-
-  const parchmentClose =
-    document.getElementById("parchmentClose");
-
-
-  /* =========================
-     DESBLOQUEO
-  ========================= */
-
-  const currentDateNumber =
-    dateNumber(currentDay, currentMonth);
-
-
-  bottles.forEach((bottle) => {
-
-    const bottleDay =
-      Number(bottle.dataset.day);
-
-    const bottleMonth =
-      Number(bottle.dataset.month);
-
-    const bottleDateNumber =
-      dateNumber(bottleDay, bottleMonth);
-
-
-    /* BOTELLA DESBLOQUEADA */
-
-    if (currentDateNumber >= bottleDateNumber) {
-
-      bottle.classList.add("unlocked");
-
-      bottle.classList.remove("locked");
-
-    }
-
-
-    /* BOTELLA BLOQUEADA */
-
-    else {
-
-      bottle.classList.add("locked");
-
-      bottle.classList.remove("unlocked");
-
-    }
-
-
-    /* =========================
-       CLICK
-    ========================= */
-
-    bottle.addEventListener("click", () => {
-
-      if (bottle.classList.contains("locked")) {
-
-        parchmentDate.textContent =
-          "Podrás abrirla el " +
-          bottle.dataset.date + ".";
-
-        parchmentOverlay.classList.add("show");
-
-      }
-
-    });
-
-  });
-
-
-  /* =========================
-     CERRAR PERGAMINO
-  ========================= */
-
-  parchmentClose.addEventListener("click", () => {
-
-    parchmentOverlay.classList.remove("show");
-
-  });
-
-
-  /* CERRAR HACIENDO CLICK FUERA */
-
-  parchmentOverlay.addEventListener("click", (event) => {
-
-    if (event.target === parchmentOverlay) {
-
-      parchmentOverlay.classList.remove("show");
-
-    }
-
-  });
-
-
-  /* CERRAR CON ESC */
-
-  document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-
-      parchmentOverlay.classList.remove("show");
-
-    }
-
-  });
-
-</script>
 </body>
 </html>
