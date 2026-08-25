@@ -347,7 +347,6 @@
 
   <audio
   id="music-player"
-  src="29ago.mp3"
 >
 </audio>
   
@@ -551,13 +550,78 @@ today.setHours(0, 0, 0, 0);
   const musicButton =
   document.querySelector(".music-button");
 
+const musicButton =
+  document.querySelector(".music-button");
+
 const musicPlayer =
   document.getElementById("music-player");
 
 
+/*
+  🎵 CANCIÓN DE CADA DÍA
+*/
+
+const dailyMusic = {
+
+  "8-29": "29ago.mp3",
+  "8-30": "30ago.mp3",
+  "8-31": "31ago.mp3",
+
+  "9-1": "01sep.mp3",
+  "9-2": "02sep.mp3",
+  "9-3": "03sep.mp3",
+  "9-4": "04sep.mp3",
+  "9-5": "05sep.mp3",
+  "9-6": "06sep.mp3"
+
+};
+
+
+/*
+  Identificamos el día actual.
+*/
+
+const musicKey =
+  (today.getMonth() + 1) + "-" + today.getDate();
+
+
+/*
+  Buscamos la canción correspondiente.
+*/
+
+const todayMusic =
+  dailyMusic[musicKey];
+
+
+/*
+  Cargamos la canción.
+*/
+
+if (todayMusic) {
+
+  musicPlayer.src = todayMusic;
+
+}
+
+
+/*
+  🎵 BOTÓN DE MÚSICA
+*/
+
 musicButton.addEventListener("click", () => {
 
   if (musicPlayer.paused) {
+
+    /*
+      Si ya llegó al segundo 30,
+      volvemos al principio.
+    */
+
+    if (musicPlayer.currentTime >= 30) {
+
+      musicPlayer.currentTime = 0;
+
+    }
 
     musicPlayer.play();
 
@@ -569,6 +633,23 @@ musicButton.addEventListener("click", () => {
 
 });
 
+
+/*
+  ⏱️ DETENER LA CANCIÓN EN LOS 30 SEGUNDOS
+*/
+
+musicPlayer.addEventListener("timeupdate", () => {
+
+  if (musicPlayer.currentTime >= 30) {
+
+    musicPlayer.pause();
+
+    musicPlayer.currentTime = 0;
+
+  }
+
+});
+  
   bottles.forEach((bottle) => {
 
     const dateText =
