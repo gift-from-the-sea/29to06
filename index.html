@@ -31,7 +31,27 @@
       height: auto;
       display: block;
       margin: 20px auto 40px;
-    }
+    } 
+
+    .music-button {
+  width: 180px;
+  height: auto;
+
+  display: block;
+
+  margin: -25px auto 35px;
+
+  cursor: pointer;
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.music-button:hover {
+  transform: scale(1.08);
+
+  filter:
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+}
 
 
     /* =========================
@@ -317,8 +337,13 @@
     src="titulo2.png"
     alt="una sorpresa en una botella"
     class="header-image"
-  >
+  > 
 
+  <img
+  src="clickaqui.png"
+  alt="Click aquí para escuchar"
+  class="music-button"
+>
 
   <!-- =========================
        BOTELLAS
