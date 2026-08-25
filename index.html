@@ -551,22 +551,40 @@ today.setHours(0, 0, 0, 0);
 
     bottle.addEventListener("click", () => {
 
-      /*
-        Si está bloqueada,
-        mostramos el pergamino.
-      */
+  /*
+    Si la botella está bloqueada,
+    mostramos el pergamino.
+  */
 
-      if (bottle.classList.contains("locked")) {
+  if (bottle.classList.contains("locked")) {
 
-        parchmentDate.textContent =
-          "Podrás abrirla el " + dateText + ".";
+    parchmentDate.textContent =
+      "Podrás abrirla el " + dateText + ".";
 
-        parchmentOverlay.classList.add("show");
+    parchmentOverlay.classList.add("show");
 
-      }
+  }
 
-    });
 
+  /*
+    Si la botella está desbloqueada,
+    abrimos su enlace en otra pestaña.
+  */
+
+  else {
+
+    const link =
+      bottle.dataset.link;
+
+    if (link) {
+
+      window.open(link, "_blank");
+
+    }
+
+  }
+
+});
   });
 
 
