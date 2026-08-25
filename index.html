@@ -345,6 +345,12 @@
   class="music-button"
 >
 
+  <audio
+  id="music-player"
+  src="29ago.mp3"
+>
+</audio>
+  
   <!-- =========================
        BOTELLAS
   ========================= -->
@@ -541,6 +547,27 @@ today.setHours(0, 0, 0, 0);
   /*
     REVISAR CADA BOTELLA
   */
+
+  const musicButton =
+  document.querySelector(".music-button");
+
+const musicPlayer =
+  document.getElementById("music-player");
+
+
+musicButton.addEventListener("click", () => {
+
+  if (musicPlayer.paused) {
+
+    musicPlayer.play();
+
+  } else {
+
+    musicPlayer.pause();
+
+  }
+
+});
 
   bottles.forEach((bottle) => {
 
