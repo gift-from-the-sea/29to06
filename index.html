@@ -462,11 +462,19 @@
     FECHA ACTUAL
   */
 
-  const today =
-    new Date();
+  /*
+  🧪 MODO DE PRUEBA
 
-  today.setHours(0, 0, 0, 0);
+  Cambia esta fecha para simular
+  cualquier día del calendario.
+*/
 
+const TEST_DATE = "2026-08-29";
+
+const today =
+  new Date(TEST_DATE + "T00:00:00");
+
+today.setHours(0, 0, 0, 0);
 
   /*
     MESES
