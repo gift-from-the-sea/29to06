@@ -437,60 +437,126 @@
 
   <script>
 
-    const lockedBottle =
-      document.querySelector(".bottle.locked");
-
-    const parchmentOverlay =
-      document.getElementById("parchmentOverlay");
-
-    const parchmentClose =
-      document.getElementById("parchmentClose");
+  const bottles =
+    document.querySelectorAll(".bottle");
 
 
-    /* Abrir pergamino */
+  /*
+    FECHA EN LA QUE COMIENZA EL CALENDARIO
 
-    lockedBottle.addEventListener("click", () => {
+    29 de agosto de 2026
+  */
 
-      parchmentOverlay.classList.add("show");
-
-    });
-
-
-    /* Cerrar con botón */
-
-    parchmentClose.addEventListener("click", () => {
-
-      parchmentOverlay.classList.remove("show");
-
-    });
+  const startDate =
+    new Date(2026, 7, 29);
 
 
-    /* Cerrar haciendo clic fuera */
+  /*
+    FECHA ACTUAL
 
-    parchmentOverlay.addEventListener("click", (event) => {
+    Esta será la fecha que usará
+    el calendario para decidir
+    qué botellas están disponibles.
+  */
 
-      if (event.target === parchmentOverlay) {
-
-        parchmentOverlay.classList.remove("show");
-
-      }
-
-    });
+  const today =
+    new Date();
 
 
-    /* Cerrar con ESC */
+  /*
+    Comparamos solamente año, mes y día.
+    Así la hora no afecta el resultado.
+  */
 
-    document.addEventListener("keydown", (event) => {
+  today.setHours(0, 0, 0, 0);
 
-      if (event.key === "Escape") {
 
-        parchmentOverlay.classList.remove("show");
+  /*
+    Revisamos cada botella
+  */
 
-      }
+  bottles.forEach((bottle) => {
 
-    });
+    const dateText =
+      bottle.dataset.date;
 
-  </script>
 
+    /*
+      Convertimos el texto de la botella
+      en una fecha real.
+
+      Ejemplo:
+
+      "29 de agosto"
+      "30 de agosto"
+      "1 de septiembre"
+    */
+
+    const parts =
+      dateText.split(" ");
+
+
+    const day =
+      parseInt(parts[0]);
+
+
+    const monthName =
+      parts[2];
+
+
+    const months = {
+
+      enero: 0,
+      febrero: 1,
+      marzo: 2,
+      abril: 3,
+      mayo: 4,
+      junio: 5,
+      julio: 6,
+      agosto: 7,
+      septiembre: 8,
+      octubre: 9,
+      noviembre: 10,
+      diciembre: 11
+
+    };
+
+
+    const month =
+      months[monthName];
+
+
+    const bottleDate =
+      new Date(2026, month, day);
+
+
+    bottleDate.setHours(0, 0, 0, 0);
+
+
+    /*
+      Si la fecha de la botella
+      ya llegó, está disponible.
+
+      Si todavía no llega,
+      queda bloqueada.
+    */
+
+    if (today >= bottleDate) {
+
+      bottle.classList.add("unlocked");
+
+      bottle.classList.remove("locked");
+
+    } else {
+
+      bottle.classList.add("locked");
+
+      bottle.classList.remove("unlocked");
+
+    }
+
+  });
+
+</script>
 </body>
 </html>
