@@ -470,7 +470,10 @@
   cualquier día del calendario.
 */
 
-const today = new Date();
+const TEST_DATE = "2026-08-29";
+
+const today =
+  new Date(TEST_DATE + "T00:00:00");
 
 today.setHours(0, 0, 0, 0);
   
