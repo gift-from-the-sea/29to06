@@ -440,11 +440,18 @@
   const bottles =
     document.querySelectorAll(".bottle");
 
+  const parchmentOverlay =
+    document.getElementById("parchmentOverlay");
+
+  const parchmentClose =
+    document.getElementById("parchmentClose");
+
+  const parchmentDate =
+    document.querySelector(".parchment-date");
+
 
   /*
     FECHA EN LA QUE COMIENZA EL CALENDARIO
-
-    29 de agosto de 2026
   */
 
   const startDate =
@@ -453,26 +460,38 @@
 
   /*
     FECHA ACTUAL
-
-    Esta será la fecha que usará
-    el calendario para decidir
-    qué botellas están disponibles.
   */
 
   const today =
     new Date();
 
-
-  /*
-    Comparamos solamente año, mes y día.
-    Así la hora no afecta el resultado.
-  */
-
   today.setHours(0, 0, 0, 0);
 
 
   /*
-    Revisamos cada botella
+    MESES
+  */
+
+  const months = {
+
+    enero: 0,
+    febrero: 1,
+    marzo: 2,
+    abril: 3,
+    mayo: 4,
+    junio: 5,
+    julio: 6,
+    agosto: 7,
+    septiembre: 8,
+    octubre: 9,
+    noviembre: 10,
+    diciembre: 11
+
+  };
+
+
+  /*
+    REVISAR CADA BOTELLA
   */
 
   bottles.forEach((bottle) => {
@@ -480,65 +499,26 @@
     const dateText =
       bottle.dataset.date;
 
-
-    /*
-      Convertimos el texto de la botella
-      en una fecha real.
-
-      Ejemplo:
-
-      "29 de agosto"
-      "30 de agosto"
-      "1 de septiembre"
-    */
-
     const parts =
       dateText.split(" ");
-
 
     const day =
       parseInt(parts[0]);
 
-
     const monthName =
       parts[2];
-
-
-    const months = {
-
-      enero: 0,
-      febrero: 1,
-      marzo: 2,
-      abril: 3,
-      mayo: 4,
-      junio: 5,
-      julio: 6,
-      agosto: 7,
-      septiembre: 8,
-      octubre: 9,
-      noviembre: 10,
-      diciembre: 11
-
-    };
-
 
     const month =
       months[monthName];
 
-
     const bottleDate =
       new Date(2026, month, day);
-
 
     bottleDate.setHours(0, 0, 0, 0);
 
 
     /*
-      Si la fecha de la botella
-      ya llegó, está disponible.
-
-      Si todavía no llega,
-      queda bloqueada.
+      BLOQUEADA O DESBLOQUEADA
     */
 
     if (today >= bottleDate) {
@@ -552,6 +532,70 @@
       bottle.classList.add("locked");
 
       bottle.classList.remove("unlocked");
+
+    }
+
+
+    /*
+      CLIC EN LA BOTELLA
+    */
+
+    bottle.addEventListener("click", () => {
+
+      /*
+        Si está bloqueada,
+        mostramos el pergamino.
+      */
+
+      if (bottle.classList.contains("locked")) {
+
+        parchmentDate.textContent =
+          "Podrás abrirla el " + dateText + ".";
+
+        parchmentOverlay.classList.add("show");
+
+      }
+
+    });
+
+  });
+
+
+  /*
+    CERRAR CON EL BOTÓN
+  */
+
+  parchmentClose.addEventListener("click", () => {
+
+    parchmentOverlay.classList.remove("show");
+
+  });
+
+
+  /*
+    CERRAR HACIENDO CLIC FUERA
+  */
+
+  parchmentOverlay.addEventListener("click", (event) => {
+
+    if (event.target === parchmentOverlay) {
+
+      parchmentOverlay.classList.remove("show");
+
+    }
+
+  });
+
+
+  /*
+    CERRAR CON ESC
+  */
+
+  document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+
+      parchmentOverlay.classList.remove("show");
 
     }
 
