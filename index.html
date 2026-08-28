@@ -231,6 +231,10 @@
       font-weight: bold;
     }
 
+    .parchment-title.gift-title {
+  font-style: italic;
+  margin: 0 0 15px;
+}
 
     .parchment-message {
 
@@ -239,6 +243,11 @@
       font-size: clamp(15px, 3vw, 19px);
     }
 
+    .parchment-message.gift-message {
+  font-style: italic;
+  margin: 15px 0 0;
+}
+    
 
     .parchment-date {
 
@@ -832,7 +841,9 @@
 
         parchmentGift.src = "";
 
-
+        parchmentTitle.classList.remove("gift-title");
+        parchmentMessage.classList.remove("gift-message");
+         
         parchmentTitle.textContent =
           "Esta botella aún no puede abrirse...";
 
@@ -875,11 +886,15 @@
 
 
   parchmentTitle.textContent =
-    "";
+    "¡Has encontrado un tesoro pirata!";
+
+  parchmentTitle.classList.add("gift-title");
 
 
   parchmentMessage.textContent =
-    "De las profundidades ha emergido un tesoro pirata";
+    "Canjea este cupón con la sirena que te ama.";
+
+  parchmentMessage.classList.add("gift-message");
 
 
   parchmentDate.textContent =
@@ -889,7 +904,6 @@
   parchmentOverlay.classList.add("show");
 
 }
-
         /*
           BOTELLA SIN REGALO
           → ENLACE NORMAL
