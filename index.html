@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -277,37 +278,52 @@
 
 
     /* =========================
-       BOTÓN CERRAR
+       BOTÓN X PIRATA
     ========================= */
 
     .parchment-close {
 
-      margin-top: 20px;
+      width: 42px;
+      height: 42px;
 
-      padding: 8px 20px;
+      padding: 0;
 
-      border: 1px solid #6b4a2a;
+      border: none;
 
-      border-radius: 3px;
-
-      background: rgba(255, 255, 255, 0.25);
-
-      color: #4b321d;
-
-      font-family: Georgia, serif;
-
-      font-size: 14px;
+      background: none;
 
       cursor: pointer;
 
-      transition: background 0.3s ease;
+      display: block;
+
+      margin: 20px auto 0;
+
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
 
 
     .parchment-close:hover {
 
-      background: rgba(255, 255, 255, 0.45);
+      transform: scale(1.15) rotate(5deg);
 
+      filter:
+        drop-shadow(0 0 6px rgba(0, 0, 0, 0.7))
+        drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+
+
+    .parchment-close img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      display: block;
+
+      user-select: none;
+
+      pointer-events: none;
     }
 
 
@@ -358,6 +374,15 @@
         width: 65%;
 
         max-width: 190px;
+      }
+
+
+      .parchment-close {
+
+        width: 34px;
+        height: 34px;
+
+        margin-top: 12px;
       }
 
     }
@@ -529,11 +554,16 @@
         </p>
 
 
+        <!-- X PIRATA -->
         <button
           class="parchment-close"
           id="parchmentClose"
+          aria-label="Cerrar"
         >
-          Cerrar
+          <img
+            src="tacha.png"
+            alt="Cerrar"
+          >
         </button>
 
       </div>
@@ -936,3 +966,4 @@
 
 </body>
 </html>
+```
