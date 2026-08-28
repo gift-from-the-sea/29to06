@@ -200,23 +200,24 @@
 
     .parchment-content {
 
-  position: absolute;
+      position: absolute;
 
-  top: 53%;
-  left: 50%;
+      top: 53%;
+      left: 50%;
 
-  transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 
-  width: 65%;
+      width: 65%;
 
-  text-align: center;
+      text-align: center;
 
-  color: #4b321d;
+      color: #4b321d;
 
-  font-family: Georgia, serif;
+      font-family: Georgia, serif;
 
-  line-height: 1.5;
-}
+      line-height: 1.5;
+    }
+
 
     /* =========================
        TEXTO DEL PERGAMINO
@@ -231,10 +232,14 @@
       font-weight: bold;
     }
 
+
     .parchment-title.gift-title {
-  font-style: italic;
-  margin: 0 0 15px;
-}
+
+      font-style: italic;
+
+      margin: 0 0 15px;
+    }
+
 
     .parchment-message {
 
@@ -243,11 +248,14 @@
       font-size: clamp(15px, 3vw, 19px);
     }
 
+
     .parchment-message.gift-message {
-  font-style: italic;
-  margin: 15px 0 0;
-}
-    
+
+      font-style: italic;
+
+      margin: 15px 0 0;
+    }
+
 
     .parchment-date {
 
@@ -265,18 +273,19 @@
 
     .parchment-gift {
 
-  display: none;
+      display: none;
 
-  width: 78%;
+      width: 78%;
 
-  max-width: 280px;
+      max-width: 280px;
 
-  height: auto;
+      height: auto;
 
-  margin: 0 auto 15px;
+      margin: 0 auto 15px;
 
-  user-select: none;
-}
+      user-select: none;
+    }
+
 
     .parchment-gift.show {
       display: block;
@@ -388,7 +397,8 @@
         width: 34px;
         height: 34px;
 
-        margin-top: 12px;
+        /* SUBIMOS LA X SOLO EN CELULAR */
+        margin-top: -15px;
       }
 
     }
@@ -843,7 +853,8 @@
 
         parchmentTitle.classList.remove("gift-title");
         parchmentMessage.classList.remove("gift-message");
-         
+
+
         parchmentTitle.textContent =
           "Esta botella aún no puede abrirse...";
 
@@ -880,30 +891,32 @@
 
         if (gift) {
 
-  parchmentGift.src = gift;
+          parchmentGift.src = gift;
 
-  parchmentGift.classList.add("show");
-
-
-  parchmentTitle.textContent =
-    "¡Has encontrado un tesoro pirata!";
-
-  parchmentTitle.classList.add("gift-title");
+          parchmentGift.classList.add("show");
 
 
-  parchmentMessage.textContent =
-    "Canjea este cupón con la sirena que te ama.";
+          parchmentTitle.textContent =
+            "¡Has encontrado un tesoro pirata!";
 
-  parchmentMessage.classList.add("gift-message");
-
-
-  parchmentDate.textContent =
-    "";
+          parchmentTitle.classList.add("gift-title");
 
 
-  parchmentOverlay.classList.add("show");
+          parchmentMessage.textContent =
+            "Canjea este cupón con la sirena que te ama.";
 
-}
+          parchmentMessage.classList.add("gift-message");
+
+
+          parchmentDate.textContent =
+            "";
+
+
+          parchmentOverlay.classList.add("show");
+
+        }
+
+
         /*
           BOTELLA SIN REGALO
           → ENLACE NORMAL
@@ -976,4 +989,3 @@
 
 </body>
 </html>
-```
