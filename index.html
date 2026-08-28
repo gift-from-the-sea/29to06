@@ -200,24 +200,23 @@
 
     .parchment-content {
 
-      position: absolute;
+  position: absolute;
 
-      top: 50%;
-      left: 50%;
+  top: 53%;
+  left: 50%;
 
-      transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-      width: 65%;
+  width: 65%;
 
-      text-align: center;
+  text-align: center;
 
-      color: #4b321d;
+  color: #4b321d;
 
-      font-family: Georgia, serif;
+  font-family: Georgia, serif;
 
-      line-height: 1.5;
-    }
-
+  line-height: 1.5;
+}
 
     /* =========================
        TEXTO DEL PERGAMINO
@@ -257,19 +256,18 @@
 
     .parchment-gift {
 
-      display: none;
+  display: none;
 
-      width: 70%;
+  width: 78%;
 
-      max-width: 260px;
+  max-width: 280px;
 
-      height: auto;
+  height: auto;
 
-      margin: 0 auto 10px;
+  margin: 0 auto 15px;
 
-      user-select: none;
-    }
-
+  user-select: none;
+}
 
     .parchment-gift.show {
       display: block;
@@ -871,27 +869,26 @@
 
         if (gift) {
 
-          parchmentGift.src = gift;
+  parchmentGift.src = gift;
 
-          parchmentGift.classList.add("show");
-
-
-          parchmentTitle.textContent =
-            "Tu sorpresa ha llegado...";
+  parchmentGift.classList.add("show");
 
 
-          parchmentMessage.textContent =
-            "Un pequeño regalo encontrado entre las olas.";
+  parchmentTitle.textContent =
+    "";
 
 
-          parchmentDate.textContent =
-            "";
+  parchmentMessage.textContent =
+    "De las profundidades ha emergido un tesoro pirata";
 
 
-          parchmentOverlay.classList.add("show");
+  parchmentDate.textContent =
+    "";
 
-        }
 
+  parchmentOverlay.classList.add("show");
+
+}
 
         /*
           BOTELLA SIN REGALO
